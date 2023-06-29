@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD CONTACTOS</title>
+    <link rel="shortcut icon" href="assets/img/foto.jpg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+</head>
+<body onload="cargarAutos();checarSesion();">
+    <nav class="navbar navbar-dark bg-info">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="assets/img/foto.jpg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            CRUD AUTOS
+          </a>
+
+          <div class="d-flex" role="search">
+            <div class="dropdown">
+                <button class="btn btn-warning dropdown-toggle" id="usuario" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a href="inicio.html" class="dropdown-item" >Inicio</a></li>
+                  <li><a href="cliente.html" class="dropdown-item" >Cliente</a></li>
+                  <li><a href="alumno.html" class="dropdown-item" >Alumno</a></li>
+                  <li><button class="dropdown-item" onclick="cerrarSesion()"><i class="bi bi-box-arrow-right p-1"></i>Cerrar Sesión</button></li>
+                </ul>
+              </div>
+          </div>   
+        </div>
+      </nav>
+    
+
+      <div class="card text-center m-4">
+        <div class="card-header">
+            CRUD AUTOS
+        </div>
+        <div class="card-body">
+            <div class="text-end">
+            <button class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#agregarModal">Agregar Auto</button>
+
+
+            </div>
+            <table class="table table-hover">
+                <thead class="table-dark">
+                  <tr>
+                    <td>Marca</td>
+                    <td>Modelo</td>
+                    <td>Año</td>
+                    <td>Color</td>
+                    <td>Costo</td>
+                    <td>Editar</td>
+                    <td>Eliminar</td>
+                  </tr>
+                </thead>
+                <tbody id="registros">
+                    
+                </tbody>
+              </table>
+
+
+
+        </div>
+        <div class="card-footer text-muted">
+          Desing by GAtooooo 2023
+        </div>
+      </div>
+
+
+
+<!-- Modal AGREGAR CONTACTO -->
+<div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">AGREGAR AUTO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formAgregar">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Marca</label>
+            <input type="text" class="form-control" id="marca" placeholder="Marca">
+          </div>
+          <div class="mb-3">
+            <label for="ap" class="form-label">Modelo</label>
+            <input type="text" class="form-control" id="modelo" placeholder="Modelo">
+          </div>
+          <div class="mb-3">
+            <label for="tel" class="form-label">Color</label>
+            <select name="" id="color" class="form-select" aria-label="Default select example">
+              <option value="blanco" id="blanco">Blanco</option>
+              <option value="azul" id="azul">Azul</option>
+              <option value="negro" id="negro">Negro</option>
+              <option value="rojo" id="rojo">Rojo</option>
+              <option value="verde" id="verde">Verde</option>
+              <option value="gris" id="gris">Gris</option>
+            </select>
+          </div>
+          
+          <div class="mb-3">
+            <label for="am" class="form-label">Año</label>
+            <select name="" id="año" class="form-select" aria-label="Default select example">
+              <option value="2000" id="2000">2000</option>
+              <option value="2001" id="2001">2001</option>
+              <option value="2002" id="2002">2002</option>
+              <option value="2003" id="2003">2003</option>
+              <option value="2004" id="2004">2004</option>
+              <option value="2005" id="2005">2005</option>
+              <option value="2006" id="2006">2006</option>
+              <option value="2007" id="2007">2007</option>
+              <option value="2008" id="2008">2008</option>
+              <option value="2009" id="2009">2009</option>
+              <option value="2010" id="2010">2010</option>
+              <option value="2011" id="2011">2011</option>
+              <option value="2012" id="2012">2012</option>
+              <option value="2013" id="2013">2013</option>
+              <option value="2014" id="2014">2014</option>
+              <option value="2015" id="2015">2015</option>
+              <option value="2016" id="2016">2016</option>
+              <option value="2017" id="2017">2017</option>
+              <option value="2018" id="2018">2018</option>
+              <option value="2019" id="2019">2019</option>
+              <option value="2020" id="2020">2020</option>
+              <option value="2021" id="2021">2021</option>
+              <option value="2022" id="2022">2022</option>
+              <option value="2023" id="2023">2023</option>
+              <option value="2024" id="2024">2024</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="correo" class="form-label">Costo</label>
+            <input type="text" class="form-control" id="costo" placeholder="Costo">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle p-1"></i>Cancelar</button>
+        <button type="button" class="btn btn-success" onclick="agregarAuto()"><i class="bi bi-box-arrow-down p-1"></i>Guardar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal EDITAR CONTACTO -->
+<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">EDITAR CONTACTO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formEditar">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Marca</label>
+          <input type="text" class="form-control" id="emarca" placeholder="Marca">
+        </div>
+        <div class="mb-3">
+          <label for="ap" class="form-label">Modelo</label>
+          <input type="text" class="form-control" id="emodelo" placeholder="Modelo">
+        </div>
+        <div class="mb-3">
+          <label for="am" class="form-label">Color</label><br>
+          <select name="" id="ecolor" class="form-select" aria-label="Default select example">
+            <option value="blanco" id="blanco">Blanco</option>
+            <option value="azul" id="azul">Azul</option>
+            <option value="negro" id="negro">Negro</option>
+            <option value="rojo" id="rojo">Rojo</option>
+            <option value="verde" id="verde">Verde</option>
+            <option value="gris" id="gris">Gris</option>
+          </select>
+          
+        </div>
+        <div class="mb-3">
+          <label for="tel" class="form-label">Año</label> <br>
+          <select name="" id="eaño" class="form-select" aria-label="Default select example">
+            <option value="2000" id="e2000">2000</option>
+            <option value="2001" id="e2001">2001</option>
+            <option value="2002" id="e2002">2002</option>
+            <option value="2003" id="e2003">2003</option>
+            <option value="2004" id="e2004">2004</option>
+            <option value="2005" id="e2005">2005</option>
+            <option value="2006" id="e2006">2006</option>
+            <option value="2007" id="e2007">2007</option>
+            <option value="2008" id="e2008">2008</option>
+            <option value="2009" id="e2009">2009</option>
+            <option value="2010" id="e2010">2010</option>
+            <option value="2011" id="e2011">2011</option>
+            <option value="2012" id="e2012">2012</option>
+            <option value="2013" id="e2013">2013</option>
+            <option value="2014" id="e2014">2014</option>
+            <option value="2015" id="e2015">2015</option>
+            <option value="2016" id="e2016">2016</option>
+            <option value="2017" id="e2017">2017</option>
+            <option value="2018" id="e2018">2018</option>
+            <option value="2019" id="e2019">2019</option>
+            <option value="2020" id="e2020">2020</option>
+            <option value="2021" id="e2021">2021</option>
+            <option value="2022" id="e2022">2022</option>
+            <option value="2023" id="e2023">2023</option>
+            <option value="2024" id="e2024">2024</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="correo" class="form-label">Costo</label>
+          <input type="text" class="form-control" id="ecosto" placeholder="Costo">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" id="idauto">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle p-1"></i>Cancelar</button>
+        <button type="button" class="btn btn-success" onclick="editarAuto()"><i class="bi bi-box-arrow-down p-1"></i>Guardar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+    
+      <script src="assets/js/appAuto.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.18/dist/sweetalert2.all.min.js"></script>
+</body>
+</html>
